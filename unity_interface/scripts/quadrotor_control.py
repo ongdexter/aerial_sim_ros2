@@ -17,13 +17,13 @@ class CameraController(Node):
     def publish_pose(self):
         # rotate around z-axis
         self.angle += 0.02
-        self.pose.orientation.x = math.sin(self.angle / 2.0)
+        self.pose.orientation.z = math.sin(self.angle / 2.0)
         self.pose.orientation.w = math.cos(self.angle / 2.0)
         # position to x, y, z
         self.pose.position.x = 0.0
         self.pose.position.y = 0.0
         self.pub.publish(self.pose)
-        self.get_logger().info(f'Published camera pose: {self.pose.position.x:.2f}, {self.pose.position.y:.2f}, {self.pose.position.z:.2f}')
+        self.get_logger().info(f'Published quadrotor pose: {self.pose.position.x:.2f}, {self.pose.position.y:.2f}, {self.pose.position.z:.2f}')
 
 def main(args=None):
     rclpy.init(args=args)
