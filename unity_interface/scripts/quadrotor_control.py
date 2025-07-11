@@ -13,18 +13,17 @@ class CameraController(Node):
         self.angle = 0.0
 
     def publish_pose(self):
-        # Example: circle around origin at y=5, radius=10
-        self.angle += 0.01
-        x = 10.0 * (rclpy.clock.Clock().now().nanoseconds / 1e9) % (2 * 3.14159)
+        # Example: circle on the xy plane at z=10, radius=10
+        self.angle += 0.02
         pose = Pose()
-        pose.position.x = 10.0 * math.cos(self.angle)
-        pose.position.y = 10.0
-        pose.position.z = 10.0 * math.sin(self.angle)
-        # rotate around x-axis 90 degrees
-        pose.orientation.x = 0.7071  # cos(45 degrees)
-        pose.orientation.y = 0.0
+        pose.position.x = 10.0 * math.cos(self.angle)  # x-forward
+        pose.position.y = 10.0 * math.sin(self.angle)  # y-left
+        pose.position.z = 20.0  # z-up (constant height)
+        # rotate around y-axis 90 degrees
+        pose.orientation.x = 0.0
+        pose.orientation.y = -0.707
         pose.orientation.z = 0.0
-        pose.orientation.w = 0.7071  # sin(45 degrees)
+        pose.orientation.w = 0.7071
         self.pub.publish(pose)
         self.get_logger().info(f'Published camera pose: {pose.position.x:.2f}, {pose.position.y:.2f}, {pose.position.z:.2f}')
 
