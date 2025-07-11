@@ -6,28 +6,16 @@ Welcome to the **Aerial Sim ROS2** package! This package provides a ROS2 interfa
 
 To launch the simulation, follow these steps:
 
-1. **Start the ROS TCP Endpoint:**
+1. **Start the ROS TCP Endpoint and simulator:**
    ```bash
-   ros2 run ros_tcp_endpoint default_server_endpoint
+   ros2 launch sim.launch.py
    ```
 
-2. **Run the Unity Quadrotor Control Interface:**
-   ```bash
-   ros2 run unity_interface quadrotor_control.py
-   ```
-
-## Description
-
-- `ros_tcp_endpoint` enables communication between ROS2 and Unity.
-- `quadrotor_control.py` manages quadrotor control commands and simulation feedback.
+2. **Communication over ROS:**
+   - **Pose commands**: Send pose commands to the quadrotor on `/quadrotor/pose_cmd` (Pose msg).
+   - **Images**: Get images from the quadrotor on `/quadrotor/image` (Image msg).
+   - **Current pose** Get pose of the quadrotor on `/quadrotor/pose` (PoseStamped msg).
 
 ## Requirements
 
-- ROS2 (tested on Humble/Foxy)
-- Unity with ROS-TCP-Connector package
-
-## Support
-
-For questions or issues, please open an issue in this repository.
-
-Happy simulating!
+- ROS2 (tested on Humble)

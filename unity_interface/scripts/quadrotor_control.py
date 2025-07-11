@@ -7,25 +7,23 @@ import math
 class CameraController(Node):
     def __init__(self):
         super().__init__('camera_controller')
-        self.pub = self.create_publisher(Pose, '/camera/pose_cmd', 10)
+        self.pub = self.create_publisher(Pose, '/quadrotor/pose_cmd', 10)
         timer_period = 0.1  # seconds (10 Hz)
         self.create_timer(timer_period, self.publish_pose)
         self.angle = 0.0
+        self.pose = Pose()
+        self.pose.position.z = 20.0
 
     def publish_pose(self):
-        # Example: circle on the xy plane at z=10, radius=10
+        # rotate around z-axis
         self.angle += 0.02
-        pose = Pose()
-        pose.position.x = 10.0 * math.cos(self.angle)  # x-forward
-        pose.position.y = 10.0 * math.sin(self.angle)  # y-left
-        pose.position.z = 20.0  # z-up (constant height)
-        # rotate around y-axis 90 degrees
-        pose.orientation.x = 0.0
-        pose.orientation.y = -0.707
-        pose.orientation.z = 0.0
-        pose.orientation.w = 0.7071
-        self.pub.publish(pose)
-        self.get_logger().info(f'Published camera pose: {pose.position.x:.2f}, {pose.position.y:.2f}, {pose.position.z:.2f}')
+        self.pose.orientation.x = math.sin(self.angle / 2.0)
+        self.pose.orientation.w = math.cos(self.angle / 2.0)
+        # position to x, y, z
+        self.pose.position.x = 0.0
+        self.pose.position.y = 0.0
+        self.pub.publish(self.pose)
+        self.get_logger().info(f'Published camera pose: {self.pose.position.x:.2f}, {self.pose.position.y:.2f}, {self.pose.position.z:.2f}')
 
 def main(args=None):
     rclpy.init(args=args)
