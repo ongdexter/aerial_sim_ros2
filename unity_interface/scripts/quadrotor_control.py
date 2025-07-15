@@ -15,13 +15,19 @@ class CameraController(Node):
         self.pose.position.z = 20.0
 
     def publish_pose(self):
-        # rotate around z-axis
+        # do a circle centered at (5,5,20) with a radius of 10
+        # and a speed of 0.05 radians per update
+        self.pose.position.x = 5.0
+        self.pose.position.y = -5.0
+        self.pose.position.z = 20.0
+        # Calculate the new position based on a circular path
+        self.pose.position.x += 10.0 * math.cos(self.angle)
+        self.pose.position.y += 10.0 * math.sin(self.angle)
+        # Increment the angle for the next position
         self.angle += 0.02
-        self.pose.orientation.z = math.sin(self.angle / 2.0)
-        self.pose.orientation.w = math.cos(self.angle / 2.0)
-        # position to x, y, z
-        self.pose.position.x = 0.0
-        self.pose.position.y = 0.0
+        if self.angle >= 2 * math.pi:
+            self.angle -= 2 * math.pi
+              
         self.pub.publish(self.pose)
         self.get_logger().info(f'Published quadrotor pose: {self.pose.position.x:.2f}, {self.pose.position.y:.2f}, {self.pose.position.z:.2f}')
 
