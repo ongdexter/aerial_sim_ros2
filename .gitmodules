@@ -2,3 +2,6 @@
 	path = ROS-TCP-Endpoint
 	url = https://github.com/Unity-Technologies/ROS-TCP-Endpoint.git
 	branch = main-ros2
+[submodule "aerial_sim_binaries"]
+	path = aerial_sim_binaries
+	url = git@github.com:ongdexter/aerial_sim_binaries.git
