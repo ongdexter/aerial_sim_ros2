@@ -12,14 +12,14 @@ class CameraController(Node):
         self.create_timer(timer_period, self.publish_pose)
         self.angle = 0.0
         self.pose = Pose()
-        self.pose.position.z = 20.0
+        self.pose.position.z = 30.0
 
     def publish_pose(self):
         # do a circle centered at (5,5,20) with a radius of 10
         # and a speed of 0.05 radians per update
         self.pose.position.x = 5.0
         self.pose.position.y = -5.0
-        self.pose.position.z = 20.0
+        self.pose.position.z = 30.0
         # Calculate the new position based on a circular path
         self.pose.position.x += 10.0 * math.cos(self.angle)
         self.pose.position.y += 10.0 * math.sin(self.angle)
