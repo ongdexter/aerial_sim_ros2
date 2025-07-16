@@ -13,7 +13,8 @@ To launch the simulation, follow these steps:
 
 2. **Communication over ROS:**
    - **Pose commands**: Send pose commands to the quadrotor on `/quadrotor/pose_cmd` (Pose msg).
-   - **Images**: Get images from the quadrotor on `/quadrotor/image` (Image msg).
+   - **RGB Images**: Get images from the quadrotor on `/quadrotor/image` (Image msg, rgb8).
+   - **Depth Images**: Get depth images from the quadrotor on `/quadrotor/depth` (Image msg, 16UC1, millimeters).
    - **Current pose** Get pose of the quadrotor on `/quadrotor/pose` (PoseStamped msg).
 
 ## Requirements
