@@ -4,4 +4,4 @@
 	branch = main-ros2
 [submodule "aerial_sim_binaries"]
 	path = aerial_sim_binaries
-	url = git@github.com:ongdexter/aerial_sim_binaries.git
+	url = http://172.20.129.15/odexter/aerial_sim_binaries.git
