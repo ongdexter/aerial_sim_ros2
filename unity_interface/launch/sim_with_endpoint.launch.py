@@ -21,6 +21,12 @@ def generate_launch_description():
     config_path = os.path.join(ws_path, 'src', 'aerial_sim_ros2', 'unity_interface', 'config', 'unity_sim_config.yaml')
 
     return LaunchDescription([
+        Node(
+            package='ros_tcp_endpoint',
+            executable='default_server_endpoint',
+            name='ros_tcp_endpoint_server',
+            output='screen',
+        ),
         ExecuteProcess(
             cmd=[sim_path, '-config', config_path],
             output='screen'

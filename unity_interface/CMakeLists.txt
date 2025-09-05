@@ -31,9 +31,9 @@ install(PROGRAMS
 )
 
 install(
-  DIRECTORY launch/
-  DIRECTORY config/
+  DIRECTORY launch/ config/
   DESTINATION share/${PROJECT_NAME}/
 )
+
 
 ament_package() 
