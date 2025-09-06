@@ -1,7 +1,7 @@
 environment: ForestScene # 'PolyCityScene, PennovationScene, ForestScene, FloodedGroundsScene'
 startPosition:
-  x: 45.0
-  y: -210.0
+  x: 185.0
+  y: -45.0
   z: 80.0
 startOrientation:
   roll: 0.0
