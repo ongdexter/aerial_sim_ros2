@@ -1,15 +1,21 @@
-environment: ForestScene # 'PolyCityScene, PennovationScene, ForestScene, FloodedGroundsScene'
-startPosition:
-  x: 45.0
-  y: -210.0
-  z: 80.0
-startOrientation:
-  roll: 0.0
-  pitch: 0.0
-  yaw: 0.0
+environment: PolyCityScene # 'PolyCityScene, PennovationScene, ForestScene, FloodedGroundsScene'
 
-# default starting positions
-# PolyCityScene: 0, 0, 30
-# PennovationScene: -400, 150, 30
-# ForestScene: 60, -200, 60
-# FloodedGroundsScene: 500, -500, 50
+quadrotor:
+  startPosition:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  startOrientation:
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
+
+ugv:
+  startPosition:
+    x: 0.0
+    y: 0.0
+    z: 1.0
+  startOrientation:
+    roll: 0.0
+    pitch: 0.0
+    yaw: 0.0
