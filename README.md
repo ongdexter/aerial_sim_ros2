@@ -8,7 +8,7 @@ To launch the simulation, follow these steps:
 
 1. **Start the ROS TCP Endpoint and simulator:**
    ```bash
-   ros2 launch sim.launch.py
+   ros2 launch unity_interface sim_with_endpoint.launch.py
    ```
 
 2. **Communication over ROS:**
