@@ -1,21 +1,122 @@
-environment: PolyCityScene # 'PolyCityScene, PennovationScene, ForestScene, FloodedGroundsScene'
+environment: PolyCityScene
 
-quadrotor:
-  startPosition:
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  startOrientation:
-    roll: 0.0
-    pitch: 0.0
-    yaw: 0.0
+sceneStartPoses:
+  - scene: PolyCityScene
+    uav:
+      startPosition:
+        x: 0.0
+        y: 0.0
+        z: 30.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+    ugv:
+      startPosition:
+        x: 0.0
+        y: 0.0
+        z: 1.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
 
-ugv:
-  startPosition:
-    x: 0.0
-    y: 0.0
-    z: 1.0
-  startOrientation:
-    roll: 0.0
-    pitch: 0.0
-    yaw: 0.0
+  - scene: PennovationScene
+    uav:
+      startPosition:
+        x: 40.0
+        y: 40.0
+        z: 40.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+    ugv:
+      startPosition:
+        x: 40.0
+        y: 40.0
+        z: 1.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+
+  - scene: ForestScene
+    uav:
+      startPosition:
+        x: -20.0
+        y: -60.0
+        z: 120.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+    ugv:
+      startPosition:
+        x: -20.0
+        y: -60.0
+        z: 70.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+
+  - scene: FloodedGroundsScene
+    uav:
+      startPosition:
+        x: 500.0
+        y: 500.0
+        z: 50.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+    ugv:
+      startPosition:
+        x: 500.0
+        y: 500.0
+        z: 0.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+
+  - scene: DiningHallScene
+    uav:
+      startPosition:
+        x: -70.0
+        y: 30.0
+        z: 60.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+    ugv:
+      startPosition:
+        x: -70.0
+        y: 30.0
+        z: 1.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+
+  - scene: Range15Scene
+    uav:
+      startPosition:
+        x: 165.0
+        y: -90.0
+        z: 60.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
+    ugv:
+      startPosition:
+        x: 160.0
+        y: -90.0
+        z: 5.0
+      startOrientation:
+        roll: 0.0
+        pitch: 0.0
+        yaw: 0.0
