@@ -1,71 +1,80 @@
-environment: PolyCityScene
+environment: PolyCity
+
+# Multi-robot configuration.
+# Each entry spawns a robot instance cloned from the original scene template.
+# 'name' sets the GameObject name and ROS topic prefix (e.g. /uav1/pose_cmd).
+# 'type' is 'uav' or 'ugv'.
+# 'startPosition' is in ROS coordinates (ENU, Z-up). Required for each robot.
+robots:
+  - name: uav1
+    type: uav
+    startPosition:
+      x: 0.0
+      y: 0.0
+      z: 30.0
+    startOrientation:
+      roll: 0.0
+      pitch: 0.0
+      yaw: 0.0
+  - name: ugv1
+    type: ugv
+    startPosition:
+      x: 0.0
+      y: 0.0
+      z: 1.0
+    startOrientation:
+      roll: 0.0
+      pitch: 0.0
+      yaw: 0.0
 
 sceneStartPoses:
   - scene: PolyCityScene
-    uav:
-      startPosition:
-        x: 0.0
-        y: 0.0
-        z: 30.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
-    ugv:
-      startPosition:
-        x: 0.0
-        y: 0.0
-        z: 1.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
-
-  - scene: PennovationScene
-    uav:
-      startPosition:
-        x: 40.0
-        y: 40.0
-        z: 40.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
-    ugv:
-      startPosition:
-        x: 40.0
-        y: 40.0
-        z: 1.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
+    robots:
+      uav1:
+        startPosition:
+          x: 0.0
+          y: 0.0
+          z: 30.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
+      ugv1:
+        startPosition:
+          x: 0.0
+          y: 0.0
+          z: 1.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
 
   - scene: ForestScene
-    uav:
-      startPosition:
-        x: -20.0
-        y: -60.0
-        z: 120.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
-    ugv:
-      startPosition:
-        x: -20.0
-        y: -60.0
-        z: 70.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
+    robots:
+      uav1:
+        startPosition:
+          x: -15.0
+          y: -50.0
+          z: 120.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
+      ugv1:
+        startPosition:
+          x: -15.0
+          y: -50.0
+          z: 70.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
 
   - scene: FloodedGroundsScene
     uav:
       startPosition:
-        x: 500.0
-        y: 500.0
+        x: 375.0
+        y: -490.0
         z: 50.0
       startOrientation:
         roll: 0.0
@@ -73,50 +82,140 @@ sceneStartPoses:
         yaw: 0.0
     ugv:
       startPosition:
-        x: 500.0
-        y: 500.0
-        z: 0.0
+        x: 375.0
+        y: -490.0
+        z: 6.0
       startOrientation:
         roll: 0.0
         pitch: 0.0
         yaw: 0.0
+
+# Custom GLB-based environments.
+# Add new environments here — just specify scene name, GLB paths, and transforms.
+# GLB paths are relative to the Assets/ folder, or provide absolute paths for your own.
+# Mesh position/rotation are in Unity world space (not ROS coordinates).
+# UAV/UGV start poses remain in ROS coordinates (ENU, Z-up).
+# colliderMesh is optional — if omitted, renderMesh is used for both rendering and collision.
+customEnvironments:
+  - scene: PennovationScene
+    renderMesh:
+      glb: sfm_meshes/pennovation_sfm_mesh_20m.glb
+      position:
+        x: 0.0
+        y: 26.6
+        z: 0.0
+      rotation:
+        x: 0.0
+        y: 180.0
+        z: 0.0
+    colliderMesh:
+      glb: sfm_meshes/pennovation_sfm_mesh_500k.glb
+      position:
+        x: 0.0
+        y: 26.6
+        z: 0.0
+      rotation:
+        x: 0.0
+        y: 180.0
+        z: 0.0
+    robots:
+      uav1:
+        startPosition:
+          x: -30.0
+          y: -35.0
+          z: 40.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
+      ugv1:
+        startPosition:
+          x: -30.0
+          y: -35.0
+          z: 1.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
 
   - scene: DiningHallScene
-    uav:
-      startPosition:
-        x: -70.0
-        y: 30.0
-        z: 60.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
-    ugv:
-      startPosition:
-        x: -70.0
-        y: 30.0
-        z: 1.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
+    renderMesh:
+      glb: sfm_meshes/dining_hall_mesh_20m.glb
+      position:
+        x: 0.0
+        y: -172.0
+        z: 0.0
+      rotation:
+        x: 0.0
+        y: 180.0
+        z: 0.0
+    colliderMesh:
+      glb: sfm_meshes/dining_hall_mesh_500k.glb
+      position:
+        x: 0.0
+        y: -172.0
+        z: 0.0
+      rotation:
+        x: 0.0
+        y: 180.0
+        z: 0.0
+    robots:
+      uav1:
+        startPosition:
+          x: -70.0
+          y: 30.0
+          z: 60.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
+      ugv1:
+        startPosition:
+          x: -70.0
+          y: 30.0
+          z: 1.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
 
   - scene: Range15Scene
-    uav:
-      startPosition:
-        x: 165.0
-        y: -90.0
-        z: 60.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
-    ugv:
-      startPosition:
-        x: 160.0
-        y: -90.0
-        z: 5.0
-      startOrientation:
-        roll: 0.0
-        pitch: 0.0
-        yaw: 0.0
+    renderMesh:
+      glb: sfm_meshes/range15_mesh.glb
+      position:
+        x: 0.0
+        y: -137.65
+        z: 0.0
+      rotation:
+        x: 0.0
+        y: 180.0
+        z: 0.0
+    colliderMesh:
+      glb: sfm_meshes/range15_mesh_500k.glb
+      position:
+        x: 0.0
+        y: -137.65
+        z: 0.0
+      rotation:
+        x: 0.0
+        y: 180.0
+        z: 0.0
+    robots:
+      uav1:
+        startPosition:
+          x: -165.0
+          y: 80.0
+          z: 60.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
+      ugv1:
+        startPosition:
+          x: -165.0
+          y: 80.0
+          z: 0.0
+        startOrientation:
+          roll: 0.0
+          pitch: 0.0
+          yaw: 0.0
